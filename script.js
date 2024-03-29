@@ -2,7 +2,7 @@ let pcScore = 0;
 let playerScore = 0;
 function getComputerChoice() {
     let val = Math.floor(Math.random() * 3);
-        console.log(val);
+        
     if (val == 0) {
         return "rock";
     }
@@ -10,7 +10,7 @@ function getComputerChoice() {
         return "paper"
     }
     else {
-        return "scissor";
+        return "scissors";
     }
 }
 
@@ -50,10 +50,36 @@ function playerPrompt(choice) {
     if (check != "rock" && check != "paper" && check != "scissors") {
         playerPrompt(prompt("ERROR, PLEASE CHOOSE ROCK PAPER OR SCISSORS"));
     }
+    else {
+        return check;
+    }
     
 }
 
 
-playerPrompt(prompt("Rock,Paper,Scissors?"));
 
-let pcChoice = getComputerChoice();
+
+
+
+
+
+function playGame() {
+   
+    for (let i = 0; i<5; i++) {
+        let pcChoice = getComputerChoice();
+        let playerChoice = playerPrompt(prompt("Rock,Paper,Scissors?"));
+        playRound(playerChoice,pcChoice)
+
+    }
+    if (playerScore == pcScore) {
+        alert(`TIED ${playerScore} to ${pcScore}`)
+    }
+    else if (playerScore>pcScore) {
+        alert(`You win! ${playerScore} to ${pcScore}`)
+    }
+    else if (pcScore>playerScore) {
+        alert(`You lose! ${playerScore} to ${pcScore}`)
+    }
+}
+
+playGame();
